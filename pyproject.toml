@@ -1,0 +1,31 @@
+[project]
+name = "mousebridge"
+version = "0.4.0"
+description = "Windows <-> macOS mouse & keyboard sharing over LAN"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+  "pynput>=1.8.2",
+  "screeninfo>=0.8",
+  "zeroconf>=0.130",
+  "pystray>=0.19",
+  "pillow>=10",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pyinstaller>=6"]
+
+[project.scripts]
+mousebridge = "bridge.app:main"
+mousebridge-cli = "bridge.main:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["bridge"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
